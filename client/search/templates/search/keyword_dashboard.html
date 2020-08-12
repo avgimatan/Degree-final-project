@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="posts-page">
+	<div class="container">
+		<div class="col text-center" align="center">
+			{% block prepost%}{% endblock %}
+			{% block post_content %}
+			<h1 class="font-weight-light">Keyword Dashboard</h1>
+			<iframe src="http://localhost:5601/app/kibana#/dashboard/2d8c47b0-7e6b-11ea-a329-73e05a222dac?embed=true&_g=()&_a=(description:'visualize+the+data+of+specific+keyword',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:'9069ea60-772a-4fb3-8b91-9d35f1e7fc29',w:24,x:0,y:0),id:'8cf5b980-8004-11ea-83a8-a1387ee86327',panelIndex:'9069ea60-772a-4fb3-8b91-9d35f1e7fc29',type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:c64d40ce-8ae6-421d-b92e-dfefdd57abd0,w:24,x:24,y:0),id:f7590e00-8002-11ea-83a8-a1387ee86327,panelIndex:c64d40ce-8ae6-421d-b92e-dfefdd57abd0,type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:'8f7d5d52-0c0f-489c-be95-f92eb49b4350',w:24,x:0,y:15),id:a2862920-8003-11ea-83a8-a1387ee86327,panelIndex:'8f7d5d52-0c0f-489c-be95-f92eb49b4350',type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:fd8a8cb2-b053-4a02-aaf0-46df21e8ec5d,w:24,x:24,y:15),id:de7c4100-daf1-11ea-89ea-23ab168d0935,panelIndex:fd8a8cb2-b053-4a02-aaf0-46df21e8ec5d,type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:'71f6edc9-f81e-4a39-9e83-99fe3ce78e0d',w:24,x:0,y:30),id:'95643f90-daf1-11ea-89ea-23ab168d0935',panelIndex:'71f6edc9-f81e-4a39-9e83-99fe3ce78e0d',type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:'9c4055dc-d86c-4144-86d6-1bb6729b4d3a',w:24,x:24,y:30),id:aa4f95f0-db3a-11ea-9f71-f10e097e65db,panelIndex:'9c4055dc-d86c-4144-86d6-1bb6729b4d3a',type:visualization,version:'7.5.1')),query:(language:kuery,query:''),timeRestore:!f,title:Keyword,viewMode:view)" height="1000" width="100%"></iframe>
+
+			<form method="post" role="form">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+				<input type="submit" value="Go To" name="mybtn" class="btn btn-primary btn-large" aria-pressed="false" autocomplete="off" >
+			</form>
+			{% if messages %}
+			<ul>
+			   {% for message in messages %}
+				   <h2 class="font-weight-light">{{ message }}</h2>
+			   {% endfor %}
+			</ul>
+			{% endif %}
+
+			{% endblock %}
+			{% block post_post%}{% endblock %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+

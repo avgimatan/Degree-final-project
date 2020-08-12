@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="posts-page">
+    <div class="container">
+        <div class="col text-center" align="center">
+            {% block prepost%}{% endblock %}
+            {% block post_content %}
+            <h1 class="font-weight-light">User Dashboard</h1>
+            <iframe src="http://localhost:5601/app/kibana#/dashboard/d9a82510-7e6a-11ea-a329-73e05a222dac?embed=true&_g
+                        =()&_a=(description:'visualize+the+data+of+specific+active+user+name+of+the+forum',filters:!(),
+                        fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),
+                        gridData:(h:15,i:'33bb2a97-e482-40cc-90ea-9a5140738d2e',w:24,x:24,y:0),id:'4c04c660-8003-11ea-
+                        83a8-a1387ee86327',panelIndex:'33bb2a97-e482-40cc-90ea-9a5140738d2e',type:visualization,
+                        version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:c1c9f823-bf40-49de-a52e-27429ebe36ba,
+                        w:24,x:0,y:0),id:f9a472b0-8004-11ea-83a8-a1387ee86327,panelIndex:c1c9f823-bf40-49de-a52e-
+                        27429ebe36ba,type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:'70076a
+                        36-d85f-4a81-aff9-b19ec27b09d0',w:24,x:0,y:15),id:d9bebd40-83ef-11ea-9cdf-29f99279da11,
+                        panelIndex:'70076a36-d85f-4a81-aff9-b19ec27b09d0',type:visualization,version:'7.5.1'),
+                        embeddableConfig:(),gridData:(h:15,i:b2f4e830-eb51-431c-af1f-794415be7f3b,w:24,x:24,y:15),
+                        id:de7c4100-daf1-11ea-89ea-23ab168d0935,panelIndex:b2f4e830-eb51-431c-af1f-794415be7f3b,type:
+                        visualization,version:'7.5.1'),(embeddableConfig:(),gridData:(h:15,i:f7059bc9-4e92-4ae5-8d4f-
+                        04e6fd8888bb,w:24,x:0,y:30),id:'95643f90-daf1-11ea-89ea-23ab168d0935',panelIndex:f7059bc9-4e92
+                        -4ae5-8d4f-04e6fd8888bb,type:visualization,version:'7.5.1'),(embeddableConfig:(),gridData:
+                        (h:15,i:a1ad0d7c-4c49-41ac-807e-04d2374913ed,w:24,x:24,y:30),id:aa4f95f0-db3a-11ea-9f71-
+                        f10e097e65db,panelIndex:a1ad0d7c-4c49-41ac-807e-04d2374913ed,type:visualization,version:
+                        '7.5.1')),query:(language:kuery,query:''),timeRestore:!f,title:'User+name',viewMode:view)"
+                    height="1000" width="100%"></iframe>
+
+            <form method="post" role="form" id="searchForm">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" value="Go To" name="mybtn" class="btn btn-primary btn-large" aria-pressed="false" autocomplete="off">
+            </form>
+
+
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <h2 class="font-weight-light">{{ message }}</h2>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% endblock %}
+            {% block post_post%}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

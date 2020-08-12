@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>The Dark Side</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+
+    <!--<link rel="stylesheet" href="{% static 'client/css/master.css'%}">-->
+    <style>
+         .my-custom-scrollbar {
+          overflow-y: auto;
+        }
+        body{
+        background: url(https://images.hdqwalls.com/wallpapers/iceberg-minimalism-7v.jpg);
+          background-size: 100%;
+        }
+        h1, h2, h3, h4{
+        color: #212529;
+        @extend .font-weight-light;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow" role="navigation" id="navbar">
+    <div class="container">
+
+        <a class="navbar-brand mynav" href="{% url 'home' %}">The Dark Side</a>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="/password_change" class="btn btn-simple">Change Password</a></li>
+            <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+            <li><a href="{% url 'search:choose' %}" class="btn btn-simple">Search</a></li>
+            <li><a href="{% url 'avatars:for_user' username=user.username %}" class="btn btn-simple">Avatar</a></li>
+
+            {% else %}
+
+            <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+            <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+            {% endif %}
+        </ul>
+
+
+    </div>
+</nav>
+
+        <div class="container mycontent ">
+         <div class="card border-0 shadow my-5 ">
+    <div class="card-body p-5">
+        {% block content %}
+
+            {% endblock %}
+
+        </div>
+    </div>
+</div>
+
+
+<canvas id="canvas"></canvas>
+
+
+</body>
+
+</html>

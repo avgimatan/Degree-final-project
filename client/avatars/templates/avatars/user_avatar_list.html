@@ -1,0 +1,31 @@
+{% extends "avatars/avatar_base.html" %}
+{% load bootstrap3 %}
+
+{% block prepost %}
+<div class="col-md-4">
+	<h1 class="font-weight-light">@{{ user.username }}</h1>
+	<a href="{% url 'avatars:create' %}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Create New Avatar</a>
+</div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+	<h3 class="font-weight-light">All Avatars</h3>
+	{% if messages %}
+	<ul>
+	   {% for message in messages %}
+		   <h2 class="font-weight-light">{{ message }}</h2>
+	   {% endfor %}
+	</ul>
+	{% endif %}
+	<form method="post" role="form">
+		<div class="row">
+		{% csrf_token %}
+			{% for avatar in avatar_list %}
+				{% include "avatars/_avatar.html" %}</br>
+			{% endfor %}
+			</div>
+		<input type="submit" value="Select Avatar" name="mybtn" class="btn btn-primary btn-large" >
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "avatars/avatar_base.html" %}
+
+
+{% block post_content %}
+<div class="container">
+    <h3 class="font-weight-light">Are you sure you want to delete this avatar?</h3></br>
+    {% include "avatars/_avatar.html" with post=object hide_delete=True %}
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+	</br>
+    <input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+    <a href="{% url 'avatars:for_user' username=user.username %}"
+       class="btn btn-dark">Cancel</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "avatars/avatar_base.html" %}
+{% load bootstrap3 %}
+
+{% block post_content %}
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <h2 class="font-weight-light">{{ message }}</h2>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="container">
+    <form method="POST" action="{% url 'avatars:create' %}" id="postForm">
+        <div class="form-group">
+            <h4 class="font-weight-light">Create New Avatar</h4>
+        </div>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary btn-large">
+        </div>
+    </form>
+</div>
+{% endblock %}

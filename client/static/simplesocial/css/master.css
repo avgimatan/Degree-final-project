@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  overflow: auto;
+  background-color: black;
+  color:white;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  overflow: auto;
+}

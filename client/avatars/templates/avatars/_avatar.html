@@ -1,0 +1,25 @@
+<div class="col-sm-6">
+    <div class="card border-secondary mb-4">
+        <div class="card-body text-secondary">
+
+               <h4 class="font-weight-light"> <input type="radio" name="avatar_list" value="{{ avatar.avatar_name }}"> {{ avatar.avatar_name }}</h4>
+
+                <span class="username"><a class="font-weight-light"
+                                          href="{% url 'avatars:for_user' username=avatar.user.username %}">@{{ avatar.user.username }}</a></span>
+                <time class="time"><a class="font-weight-light"
+                                      href="{% url 'avatars:single' username=avatar.user.username pk=avatar.pk %}">{{ avatar.created_at }}</a></time>
+
+
+            <div class="media-footer">
+                {% if user.is_authenticated and avatar.user == user and not hide_delete %}
+                <a href="{% url 'avatars:delete' pk=avatar.pk %}" title="delete" class="btn btn-danger">
+                    <span aria-hidden="true">Delete</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
